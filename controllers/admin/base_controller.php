@@ -11,8 +11,8 @@ class BaseController
             ob_start();
             require_once('views/admin/header.php');
             require_once('views/admin/sidebar.php');
-            require_once('views/admin/footer.php');
             require_once($view_file);
+            require_once('views/admin/footer.php');
             $content = ob_get_clean();
             require_once('/xampp/htdocs/admin_iot/views/admin/basic_layouts.php');
         } else {

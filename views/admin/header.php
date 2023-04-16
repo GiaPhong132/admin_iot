@@ -17,7 +17,8 @@
 
     <!-- Custom styles for this template-->
     <link href="/admin_iot/public/css/sb-admin-2.min.css" rel="stylesheet">
-
+    <link href="/admin_iot/public/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
+    <div id="wrapper">
