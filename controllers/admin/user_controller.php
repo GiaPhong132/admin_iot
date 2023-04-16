@@ -6,13 +6,13 @@ class UserController extends BaseController
 {
     function __construct()
     {
-        $this->folder = 'user';
+        $this->folder = 'users';
     }
 
     public function index()
     {
         $user = User::getAll();
-        $data = array('user' => $user);
+        $data = array('users' => $user);
         $this->render('index', $data);
     }
 
