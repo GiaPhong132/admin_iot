@@ -45,35 +45,16 @@
                             echo "<td> $row->email</td>";
                             echo "<td> $row->type</td>";
                             echo "<td> $row->payment</td>";
-                            echo "<td> $row->concurrent_device  </td>";
+                            echo "<td> $row->concurrent_device</td>";
                             echo '<td>
-                            <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal_' . $count . '">Update</button>
+                            <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal_' . $row->id . '">Update</button>
 
-                            <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal_' . $count . '">Delete</button>
+                            <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal_' . $row->id . '">Delete</button>
 
                             </td>';
                             echo  "</tr>";
-                            $count += 1;
-                        }
-
-                        ?>
-
-                    </tbody>
-                </table>
-
-                <div class="container">
-                    <h2>Modal Example</h2>
-                    <!-- Trigger the modal with a button -->
-
-
-                    <!-- Modal -->
-                    <form action="index.php?page=admin&controller=user&action=update" method="POST">
-                        <?php
-                        $count = 0;
-                        $user_len = count($users);
-                        foreach ($users as $row) {
                             echo '
-                        <div class="modal fade" id="myModal_' . $count . '" role="dialog">
+                        <div class="modal fade" id="myModal_' . $row->id . '" role="dialog">
                         <div class="modal-dialog">
                             <!-- Modal content-->
                             <div class="modal-content">
@@ -87,7 +68,8 @@
 
                                         <div class="total-0">
                                             <div class="vertical_bottom">
-                                                <form action="index.php?page=admin&controller=user&action=update" method="POST">
+                                                <form action="index.php?page=admin&controller=user&action=editInfo" method="POST">
+                                            <input type="hidden" value="' . $row->id . '"        name="user_id">
                                                         <div class="left">
                                                             <div class="user-info">
                                                                 <label for="">Concurrent Users</label><br>
@@ -98,10 +80,7 @@
                                                                     <option value="4">4</option>
                                                                 </select>
                                                             </div>
-                                                            <div class="user-info">
-                                                                <label>Payment Amount/Month</label><br>
-                                                                <input class="form-control" placeholder="Search" type="number" name="payment-amount" id="">
-                                                            </div>
+
                                                         </div>
                                                         <div class="right">
                                                             <div class="user-info">
@@ -116,11 +95,11 @@
 
                                                             <div class="user-info">
                                                                 <label for="">Email</label><br>
-                                                                <input class="form-control" placeholder="Search" type="text" name="gmail" value="' . $row->email . '">
+                                                                <input class="form-control" placeholder="Search" type="text" name="email" value="' . $row->email . '">
                                                             </div>
                                                             <div class="user-info">
                                                                 <label for="">Phone</label><br>
-                                                                <input class="form-control" placeholder="Search" type="number" name="phone-number" value="' . $row->phone_number . '">
+                                                                <input class="form-control" placeholder="Search" type="text" name="phone_number" value="' . $row->phone_number . '">
                                                             </div>
                                                             <div class="user-info">
                                                                 <label for="">Payment</label><br>
@@ -133,11 +112,11 @@
                                                             </div>
                                                             <div class="user-info">
                                                                 <label for="">Account Type</label><br>
-                                                                <select class="form-control" placeholder="Search" name="account-type" id="">
-                                                                    <option value="vip-1">VIP 1</option>
-                                                                    <option value="vip-2">VIP 2</option>
-                                                                    <option value="vip-3">VIP 3</option>
-                                                                    <option value="vip-4">VIP 4</option>
+                                                                <select class="form-control" placeholder="Search" name="type" id="">
+                                                                    <option value="VIP1">VIP 1</option>
+                                                                    <option value="VIP2">VIP 2</option>
+                                                                    <option value="VIP3">VIP 3</option>
+                                                                    <option value="VIP4">VIP 4</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -148,24 +127,20 @@
 
                                                         </div>
                                                         <div class="modal-footer">
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                        <button name="user_update_' . $count . '" type="submit" class="btn btn-success">Update</button>
+                                                        <button name="user_updated" value="' . $row->id . '" type="submit" class="btn btn-success">Update</button>
                                                         </div>
-                                                        </form>
-                            </div>
-                        </div>
-                </div>
-                        ';
-                            $count += 1;
+                                                        </div>
+                                                        </div>
+                                                        </div>
+                                                        ';
+
+                            echo '</form>';
                         }
+
                         ?>
 
-
-
-                    </form>
-
-                </div>
-
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

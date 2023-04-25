@@ -3,6 +3,7 @@ require_once('connection.php');
 class User
 {
     // public $profile_photo;
+    public $id;
     public $email;
     public $fname;
     public $lname;
@@ -16,8 +17,9 @@ class User
     public $date_created;
     // public $password;
 
-    public function __construct($email, $fname, $lname, $gender, $state, $type, $payment, $concurrent_device, $phone_number, $birthday, $date_created)
+    public function __construct($id, $email, $fname, $lname, $gender, $state, $type, $payment, $concurrent_device, $phone_number, $birthday, $date_created)
     {
+        $this->id = $id;
         $this->email = $email;
         $this->fname = $fname;
         $this->lname = $lname;
@@ -39,6 +41,7 @@ class User
         $users = [];
         foreach ($user_all as $user) {
             $users[] = new User(
+                $user['_id'],
                 $user['email'],
                 $user['fname'],
                 $user['lname'],
@@ -108,19 +111,30 @@ class User
     // }
 
 
-    // static function update($email, $profile_photo, $fname, $lname, $gender, $age, $phone)
-    // {
-    //     $db = DB::getInstance();
-    //     $req = $db->query(
-    //         "
-    //         UPDATE user
-    //         SET profile_photo = '$profile_photo', fname = '$fname', lname = '$lname', gender= '$gender', age ='$age', phone = '$phone', updateAt = NOW()
-    //         WHERE email = '$email'
-    //         ;"
-    //     );
-    //     return $req;
-    // }
+    static function update($id, $email, $fname, $lname, $type, $gender, $payment, $concurrent_device)
+    {
+        $db = DB::getInstance();
+        $users_collection = $db->selectCollection('user');
+        $cond = ['_id' => $id];
+        $changeValue = ['$set' => ['email' => $email, 'fname' => $fname, 'lname' => $lname, 'type' => $type, 'payment' => $payment, 'concurrent_device' => $concurrent_device]];
+        $result = $users_collection->updateOne($cond, $changeValue);
+        return $result;
+    }
 
+    // public $profile_photo;
+    // public $id;
+    // public $email;
+    // public $fname;
+    // public $lname;
+    // public $gender;
+    // public $state;
+    // public $type;
+    // public $payment;
+    // public $concurrent_device;
+    // public $phone_number;
+    // public $birthday;
+    // public $date_created;
+    // // public $password;
 
 
     // static function validation($email, $password)
