@@ -1,0 +1,57 @@
+.total {
+    width: 712px;
+    height: 742px;
+    /* padding-top: 4cm; */
+    margin: auto;
+}
+
+.total-0 {
+    padding-left: 0.5cm;
+    padding-right: 0.5cm;
+    margin: auto;
+}
+
+.vertical-top {
+    background-color: aqua;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+
+/* border: 3px solid green; */
+
+.left img {
+    width: 262px;
+    height: 262px;
+    border-radius: 50%;
+}
+
+.wrap-image {
+    /* padding-top: 0.5cm; */
+    margin-top: 0.4cm;
+    width: 262px;
+    height: 262px;
+    border: 1.5px solid black;
+}
+
+.button-upload {
+    margin: auto;
+    width: 60%;
+    padding-top: 10px;
+}
+
+.user-info {
+    /* padding-top: 0.5cm; */
+}
+
+.user-info input,
+select {
+    width: 287px;
+    height: 36px;
+}
