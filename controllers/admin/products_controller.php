@@ -50,7 +50,7 @@ class ProductsController extends BaseController
         $months = $result['months'];
         $amount = $result['amount'];
         $data = array('amount' => $amount, "months" => $months);
-        $this->render('chart', $data);
+        $this->render('userChart', $data);
     }
 
     public function getFanChart()
@@ -65,21 +65,51 @@ class ProductsController extends BaseController
 
     public function getGasChart()
     {
+        $result = Product::getGasVolume();
+        $amount  = $result["amount"];
+        $months = $result["months"];
+        $data = array('amount' => $amount, 'months' => $months);
+        $this->render('gasChart', $data);
     }
     public function getHumiChart()
     {
+        $result = Product::getHumiVolume();
+        $amount  = $result["amount"];
+        $months = $result["months"];
+        $data = array('amount' => $amount, 'months' => $months);
+        $this->render('humiChart', $data);
     }
     public function getTempChart()
     {
+        $result = Product::getTempVolume();
+        $amount  = $result["amount"];
+        $months = $result["months"];
+        $data = array('amount' => $amount, 'months' => $months);
+        $this->render('tempChart', $data);
     }
     public function getLedChart()
     {
+        $result = Product::getLedVolume();
+        $amount  = $result["amount"];
+        $months = $result["months"];
+        $data = array('amount' => $amount, 'months' => $months);
+        $this->render('ledChart', $data);
     }
     public function getPirChart()
     {
+        $result = Product::getPirVolume();
+        $amount  = $result["amount"];
+        $months = $result["months"];
+        $data = array('amount' => $amount, 'months' => $months);
+        $this->render('pirChart', $data);
     }
     public function getServoChart()
     {
+        $result = Product::getServoVolume();
+        $amount  = $result["amount"];
+        $months = $result["months"];
+        $data = array('amount' => $amount, 'months' => $months);
+        $this->render('servoChart', $data);
     }
 
     // public function getAll()

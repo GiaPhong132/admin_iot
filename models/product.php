@@ -105,7 +105,7 @@ class Product
             $cond = ['date_created' => ['$lt' => $utc_date]];
             // var_dump($cond);
             array_unshift($amount, $user_collection->count($cond));
-            array_unshift($months, intval($curr_month));
+            array_unshift($months, getMonth($curr_month));
             // echo $result->countDocuments();
 
             $curr_month -= 1;
@@ -137,7 +137,187 @@ class Product
 
             $result  = $fan_volume_coll->find($cond);
             array_unshift($amount, getAverage($result)) . '    ';
-            array_unshift($months, intval($curr_month));
+            array_unshift($months, getMonth($curr_month));
+            $curr_month -= 1;
+            $count_months -= 1;
+        }
+        return array("amount" => $amount, "months" => $months);
+    }
+
+    static function getGasVolume()
+    {
+        $db = DB::getInstance();
+        $fan_volume_coll = $db->selectCollection('gas_volume');
+        $curr_year = date('Y');
+        $curr_month = date('m');
+        $start_date = "01";
+        $curr_time = "00:00:00";
+        $count_months = 4;
+        $months = [];
+        $amount = [];
+        while ($count_months > 0) {
+            $end_date = strval(getEndDate($curr_month));
+            $start = $curr_year . '-' . $curr_month . '-' . $start_date . ' ' . $curr_time;
+            $end = $curr_year . '-' . $curr_month . '-' . $end_date . ' ' . $curr_time;
+            $start = new DateTime($start);
+            $end = new DateTime($end);
+            $start = new MongoDB\BSON\UTCDateTime($start->getTimestamp() * 1000);
+            $end = new MongoDB\BSON\UTCDateTime($end->getTimestamp() * 1000);
+            $cond = ['time' => ['$gte' => $start, '$lte' => $end]];
+
+            $result  = $fan_volume_coll->find($cond);
+            array_unshift($amount, getAverage($result)) . '    ';
+            array_unshift($months, getMonth($curr_month));
+            $curr_month -= 1;
+            $count_months -= 1;
+        }
+        return array("amount" => $amount, "months" => $months);
+    }
+
+    static function getHumiVolume()
+    {
+        $db = DB::getInstance();
+        $fan_volume_coll = $db->selectCollection('humi_volume');
+        $curr_year = date('Y');
+        $curr_month = date('m');
+        $start_date = "01";
+        $curr_time = "00:00:00";
+        $count_months = 4;
+        $months = [];
+        $amount = [];
+        while ($count_months > 0) {
+            $end_date = strval(getEndDate($curr_month));
+            $start = $curr_year . '-' . $curr_month . '-' . $start_date . ' ' . $curr_time;
+            $end = $curr_year . '-' . $curr_month . '-' . $end_date . ' ' . $curr_time;
+            $start = new DateTime($start);
+            $end = new DateTime($end);
+            $start = new MongoDB\BSON\UTCDateTime($start->getTimestamp() * 1000);
+            $end = new MongoDB\BSON\UTCDateTime($end->getTimestamp() * 1000);
+            $cond = ['time' => ['$gte' => $start, '$lte' => $end]];
+
+            $result  = $fan_volume_coll->find($cond);
+            array_unshift($amount, getAverage($result)) . '    ';
+            array_unshift($months, getMonth($curr_month));
+            $curr_month -= 1;
+            $count_months -= 1;
+        }
+        return array("amount" => $amount, "months" => $months);
+    }
+
+    static function getLedVolume()
+    {
+        $db = DB::getInstance();
+        $fan_volume_coll = $db->selectCollection('led_volume');
+        $curr_year = date('Y');
+        $curr_month = date('m');
+        $start_date = "01";
+        $curr_time = "00:00:00";
+        $count_months = 4;
+        $months = [];
+        $amount = [];
+        while ($count_months > 0) {
+            $end_date = strval(getEndDate($curr_month));
+            $start = $curr_year . '-' . $curr_month . '-' . $start_date . ' ' . $curr_time;
+            $end = $curr_year . '-' . $curr_month . '-' . $end_date . ' ' . $curr_time;
+            $start = new DateTime($start);
+            $end = new DateTime($end);
+            $start = new MongoDB\BSON\UTCDateTime($start->getTimestamp() * 1000);
+            $end = new MongoDB\BSON\UTCDateTime($end->getTimestamp() * 1000);
+            $cond = ['time' => ['$gte' => $start, '$lte' => $end]];
+
+            $result  = $fan_volume_coll->find($cond);
+            array_unshift($amount, getCount($result)) . '    ';
+            array_unshift($months, getMonth($curr_month));
+            $curr_month -= 1;
+            $count_months -= 1;
+        }
+        return array("amount" => $amount, "months" => $months);
+    }
+
+    static function getPirVolume()
+    {
+        $db = DB::getInstance();
+        $fan_volume_coll = $db->selectCollection('pir_volume');
+        $curr_year = date('Y');
+        $curr_month = date('m');
+        $start_date = "01";
+        $curr_time = "00:00:00";
+        $count_months = 4;
+        $months = [];
+        $amount = [];
+        while ($count_months > 0) {
+            $end_date = strval(getEndDate($curr_month));
+            $start = $curr_year . '-' . $curr_month . '-' . $start_date . ' ' . $curr_time;
+            $end = $curr_year . '-' . $curr_month . '-' . $end_date . ' ' . $curr_time;
+            $start = new DateTime($start);
+            $end = new DateTime($end);
+            $start = new MongoDB\BSON\UTCDateTime($start->getTimestamp() * 1000);
+            $end = new MongoDB\BSON\UTCDateTime($end->getTimestamp() * 1000);
+            $cond = ['time' => ['$gte' => $start, '$lte' => $end]];
+
+            $result  = $fan_volume_coll->find($cond);
+            array_unshift($amount, getCount($result)) . '    ';
+            array_unshift($months, getMonth($curr_month));
+            $curr_month -= 1;
+            $count_months -= 1;
+        }
+        return array("amount" => $amount, "months" => $months);
+    }
+
+    static function getServoVolume()
+    {
+        $db = DB::getInstance();
+        $fan_volume_coll = $db->selectCollection('servo_volume');
+        $curr_year = date('Y');
+        $curr_month = date('m');
+        $start_date = "01";
+        $curr_time = "00:00:00";
+        $count_months = 4;
+        $months = [];
+        $amount = [];
+        while ($count_months > 0) {
+            $end_date = strval(getEndDate($curr_month));
+            $start = $curr_year . '-' . $curr_month . '-' . $start_date . ' ' . $curr_time;
+            $end = $curr_year . '-' . $curr_month . '-' . $end_date . ' ' . $curr_time;
+            $start = new DateTime($start);
+            $end = new DateTime($end);
+            $start = new MongoDB\BSON\UTCDateTime($start->getTimestamp() * 1000);
+            $end = new MongoDB\BSON\UTCDateTime($end->getTimestamp() * 1000);
+            $cond = ['time' => ['$gte' => $start, '$lte' => $end]];
+
+            $result  = $fan_volume_coll->find($cond);
+            array_unshift($amount, getCount($result)) . '    ';
+            array_unshift($months, getMonth($curr_month));
+            $curr_month -= 1;
+            $count_months -= 1;
+        }
+        return array("amount" => $amount, "months" => $months);
+    }
+
+    static function getTempVolume()
+    {
+        $db = DB::getInstance();
+        $fan_volume_coll = $db->selectCollection('temp_volume');
+        $curr_year = date('Y');
+        $curr_month = date('m');
+        $start_date = "01";
+        $curr_time = "00:00:00";
+        $count_months = 4;
+        $months = [];
+        $amount = [];
+        while ($count_months > 0) {
+            $end_date = strval(getEndDate($curr_month));
+            $start = $curr_year . '-' . $curr_month . '-' . $start_date . ' ' . $curr_time;
+            $end = $curr_year . '-' . $curr_month . '-' . $end_date . ' ' . $curr_time;
+            $start = new DateTime($start);
+            $end = new DateTime($end);
+            $start = new MongoDB\BSON\UTCDateTime($start->getTimestamp() * 1000);
+            $end = new MongoDB\BSON\UTCDateTime($end->getTimestamp() * 1000);
+            $cond = ['time' => ['$gte' => $start, '$lte' => $end]];
+
+            $result  = $fan_volume_coll->find($cond);
+            array_unshift($amount, getAverage($result)) . '    ';
+            array_unshift($months, getMonth($curr_month));
             $curr_month -= 1;
             $count_months -= 1;
         }
@@ -154,6 +334,15 @@ function getAverage($result)
         $count += 1;
     }
     return number_format($sum / $count, 2);
+}
+
+function getCount($result)
+{
+    $sum = 0;
+    foreach ($result as $item) {
+        $sum += $item['value'];
+    }
+    return $sum;
 }
 
 function getEndDate($month)
@@ -175,4 +364,20 @@ function getEndDate($month)
             $endDate = 31;
     }
     return $endDate;
+}
+
+function getMonth($month)
+{
+    if ($month == 1) return "January";
+    elseif ($month == 2) return "February";
+    elseif ($month == 3) return "March";
+    elseif ($month == 4) return "April";
+    elseif ($month == 5) return "May";
+    elseif ($month == 6) return "June";
+    elseif ($month == 7) return "July";
+    elseif ($month == 8) return "August";
+    elseif ($month == 9) return "September";
+    elseif ($month == 10) return "October";
+    elseif ($month == 11) return "November";
+    elseif ($month == 12) return "December";
 }

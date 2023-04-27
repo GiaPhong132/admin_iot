@@ -99,7 +99,7 @@
                 <!-- <a class="collapse-item" href="register.html">Register</a> -->
                 <!-- <a class="collapse-item" href="forgot-password.html">Forgot Password</a> -->
                 <div class="collapse-divider"></div>
-                <h6 class="collapse-header">Device:</h6>
+                <h6 class="collapse-header">Devices:</h6>
                 <a class="collapse-item" href="index.php?page=admin&controller=products&action=getFanChart">Fan</a>
                 <a class="collapse-item" href="index.php?page=admin&controller=products&action=getGasChart">Gas</a>
                 <a class="collapse-item" href="index.php?page=admin&controller=products&action=getHumiChart">Humidity</a>

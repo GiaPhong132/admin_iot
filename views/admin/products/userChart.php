@@ -17,8 +17,8 @@
     <input id="month_2" type="hidden" value=" <?php echo $months[2]; ?>">
     <input id="month_3" type="hidden" value=" <?php echo $months[3]; ?>">
 
-    <canvas id="myChart" style="width:50%;max-width:600px; max-height: 450px;float: right;"></canvas>
-    <script src="./views/admin/products/chart.js"> </script>
+    <canvas id="myChart" style="width:50%;max-width:600px; max-height: 450px;float: right; margin-right: 0.5cm;"></canvas>
+    <script src="./views/admin/products/chart/userChart.js"> </script>
 </body>
 
 </html>
