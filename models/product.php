@@ -75,13 +75,13 @@ class Product
         return $req;
     }
 
-    static function update($id, $name, $price, $description, $content, $img)
+    static function update($id, $abstract_name, $name, $origin, $price, $description, $amount_in_stock)
     {
         $db = DB::getInstance();
-        $req = $db->query(
-            "  UPDATE product
-                SET name = '$name', price = $price, description = '$description', content = '$content', img = '$img'
-                WHERE id = $id;"
-        );
+        $device_collection = $db->selectCollection('abstract_device');
+        $cond = ['_id' => $id];
+        $changeValue = ['$set' => ['abstract_name' => $abstract_name, 'name' => $name, 'origin' => $origin, 'price' => $price, 'description' => $description, 'amount_in_stock' => $amount_in_stock]];
+        $result = $device_collection->updateOne($cond, $changeValue);
+        return $result;
     }
 }

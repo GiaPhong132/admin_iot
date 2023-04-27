@@ -64,7 +64,7 @@
 
                                         <div class="total-0">
                                             <div class="vertical_bottom">
-                                                <form action="index.php?page=admin&controller=user&action=editInfo" method="POST">
+                                                <form action="index.php?page=admin&controller=products&action=editInfo" method="POST">
                                             <input type="hidden" value="' . $row->id . '"        name="device_id">
                                                         <div class="left">
 
@@ -93,14 +93,21 @@
                                                                 <input class="form-control" placeholder="Search" type="text" name="amount_in_stock" value="' . $row->amount_in_stock . '">
                                                             </div>
 
+                                                             </div>
+                                                                <label for="">Description</label><br>
+                                                                <textarea row="5" col="10" class="form-control" placeholder="Search" type="text" name="description" value="' . $row->description . '">
+                                                                ' . $row->description . '
+                                                                </textarea>
+                                                            </div>
+
 
                                                             </div>
                                                             </div>
                                                             </div>
                                                           </div>
-                                                         </div>
 
-                                                            </div>
+
+
                                                         <div class="modal-footer">
                                                         <button name="device_updated" value="' . $row->id . '" type="submit" class="btn btn-success">Update</button>
                                                         </div>
