@@ -111,7 +111,7 @@ class User
     // }
 
 
-    static function update($id, $email, $fname, $lname, $type, $gender, $payment, $concurrent_device)
+    static function update($id, $email, $fname, $lname, $type, $gender,$phone_number, $payment, $concurrent_device)
     {
         $db = DB::getInstance();
         $users_collection = $db->selectCollection('user');

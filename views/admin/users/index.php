@@ -73,11 +73,20 @@
                                                         <div class="left">
                                                             <div class="user-info">
                                                                 <label for="">Concurrent Users</label><br>
-                                                                <select name="" id="">
+                                                                <select name="concurrent_device">
                                                                     <option value="1">1</option>
                                                                     <option value="2">2</option>
                                                                     <option value="3">3</option>
                                                                     <option value="4">4</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="user-info">
+                                                                <label for="">Gender</label><br>
+                                                                <select name="gender">
+                                                                    <option value="Male">Male</option>
+                                                                    <option value="Female">Female</option>
+                                                                    <option value="Other">Other</option>
                                                                 </select>
                                                             </div>
 
@@ -103,8 +112,8 @@
                                                             </div>
                                                             <div class="user-info">
                                                                 <label for="">Payment</label><br>
-                                                                <select class="form-control" placeholder="Search" name="payment" id="">
-                                                                    <option value="momo">Momo</option>
+                                                                <select class="form-control" placeholder="Search" name="payment">
+                                                                    <option value="Momo">Momo</option>
                                                                     <option value="ZaloPay">ZaloPay</option>
                                                                     <option value="VNPay">VNPay</option>
                                                                     <option value="Paypal">Paypal</option>
