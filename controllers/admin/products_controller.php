@@ -43,7 +43,7 @@ class ProductsController extends BaseController
         $this->render('index', $data);
     }
 
-    public function getChart()
+    public function getUserChart()
     {
 
         $result =  Product::getUserNumAfter();
@@ -51,6 +51,35 @@ class ProductsController extends BaseController
         $amount = $result['amount'];
         $data = array('amount' => $amount, "months" => $months);
         $this->render('chart', $data);
+    }
+
+    public function getFanChart()
+    {
+        $result = Product::getFanVolume();
+        $amount  = $result["amount"];
+        $months = $result["months"];
+        $data = array('amount' => $amount, 'months' => $months);
+        $this->render('fanChart', $data);
+    }
+
+
+    public function getGasChart()
+    {
+    }
+    public function getHumiChart()
+    {
+    }
+    public function getTempChart()
+    {
+    }
+    public function getLedChart()
+    {
+    }
+    public function getPirChart()
+    {
+    }
+    public function getServoChart()
+    {
     }
 
     // public function getAll()

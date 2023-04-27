@@ -23,7 +23,7 @@
         }];
 
         const layout = {
-            title: "World Wide Wine Production"
+            title: "Users"
         };
 
         Plotly.newPlot("myPlot", data, layout);

@@ -9,7 +9,7 @@ $controllers = array(
     'layouts' => ['index'],
 
     'members' => ['index', 'addUser', 'edit', 'getAll'],
-    'products' => ['index', 'add', 'editInfo', 'getChart', 'delete', 'getAll'],
+    'products' => ['index', 'add', 'editInfo', 'getUserChart', 'getFanChart', 'getGasChart', 'getHumiChart', 'getTempChart', 'getLedChart', 'getPirChart', 'getServoChart'],
     'news' => ['index', 'add', 'edit', 'delete', 'hide'],
     'comments' => ['index', 'hide', 'add', 'edit', 'delete'],
     'admin' => ['index', 'add', 'edit', 'delete'],
