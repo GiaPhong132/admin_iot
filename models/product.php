@@ -137,7 +137,7 @@ class Product
 
             $result  = $fan_volume_coll->find($cond);
             array_unshift($amount, getAverage($result)) . '    ';
-            array_unshift($months, $curr_month);
+            array_unshift($months, intval($curr_month));
             $curr_month -= 1;
             $count_months -= 1;
         }
