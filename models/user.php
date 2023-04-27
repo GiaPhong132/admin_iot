@@ -111,12 +111,12 @@ class User
     // }
 
 
-    static function update($id, $email, $fname, $lname, $type, $gender,$phone_number, $payment, $concurrent_device)
+    static function update($id, $email, $fname, $lname, $type, $gender, $phone_number, $payment, $concurrent_device)
     {
         $db = DB::getInstance();
         $users_collection = $db->selectCollection('user');
         $cond = ['_id' => $id];
-        $changeValue = ['$set' => ['email' => $email, 'fname' => $fname, 'lname' => $lname, 'type' => $type, 'payment' => $payment, 'concurrent_device' => $concurrent_device]];
+        $changeValue = ['$set' => ['email' => $email, 'fname' => $fname, 'lname' => $lname, 'type' => $type, 'gender' => $gender, 'phone_number' => $phone_number, 'payment' => $payment, 'concurrent_device' => $concurrent_device]];
         $result = $users_collection->updateOne($cond, $changeValue);
         return $result;
     }

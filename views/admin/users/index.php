@@ -84,9 +84,32 @@
                                                             <div class="user-info">
                                                                 <label for="">Gender</label><br>
                                                                 <select name="gender">
-                                                                    <option value="Male">Male</option>
-                                                                    <option value="Female">Female</option>
-                                                                    <option value="Other">Other</option>
+                                        ';
+
+                            if ($row->gender == "Male") {
+                                echo '
+                                    <option value="Male" readonly>Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+
+                                    ';
+                            } elseif ($row->gender == "Female") {
+                                echo '
+                                    <option value="Female" readonly>Female</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Other">Other</option>
+                                       ';
+                            } elseif ($row->gender == "Other") {
+                                echo '
+                                    <option value="Other" readonly>Other</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                       ';
+                            }
+
+
+
+                            echo '
                                                                 </select>
                                                             </div>
 

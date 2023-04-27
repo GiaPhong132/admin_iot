@@ -22,20 +22,15 @@ class UserController extends BaseController
 
     public function editInfo()
     {
-        // $id = $_POST['user_id'];
-        // $id = new ObjectID($_POST['user_id']);
         $id = new ObjectID($_POST['user_id']);
         $email = $_POST['email'];
         $fname = $_POST['fname'];
         $lname = $_POST['lname'];
         $type = $_POST['type'];
         $gender = $_POST['gender'];
-        $gender = 'Male';
         $phone_number = $_POST['phone_number'];
         $payment = $_POST['payment'];
-        // $payment = 'Momo';
         $concurrent_device = $_POST['concurrent_device'];
-        // $concurrent_device = 13;
         $result = User::update($id, $email, $fname, $lname, $type, $gender, $phone_number, $payment, $concurrent_device);
         echo var_dump($result);
     }
