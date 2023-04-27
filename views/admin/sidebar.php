@@ -80,7 +80,7 @@
                 <!-- <a class="collapse-item" href="forgot-password.html">Forgot Password</a> -->
                 <div class="collapse-divider"></div>
                 <h6 class="collapse-header">Device:</h6>
-                <a class="collapse-item" href="tables.html">Device</a>
+                <a class="collapse-item" href="index.php?page=admin&controller=products&action=index">Device</a>
                 <!-- <a class="collapse-item" href="blank.html">Blank Page</a> -->
             </div>
         </div>

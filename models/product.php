@@ -3,55 +3,60 @@ require_once('connection.php');
 class Product
 {
     public $id;
+    public $abstract_name;
     public $name;
+    public $origin;
     public $price;
     public $description;
-    public $content;
-    public $img;
+    public $amount_in_stock;
 
-    public function __construct($id, $name, $price, $description, $content, $img)
+    public function __construct($id, $abstract_name, $name, $origin, $price, $description, $amount_in_stock)
     {
         $this->id = $id;
+        $this->abstract_name = $abstract_name;
         $this->name = $name;
+        $this->origin = $origin;
         $this->price = $price;
         $this->description = $description;
-        $this->content = $content;
-        $this->img = $img;
+        $this->amount_in_stock = $amount_in_stock;
     }
 
     static function getAll()
     {
+
         $db = DB::getInstance();
-        $req = $db->query("SELECT * FROM product");
+        $product_collection = $db->selectCollection('abstract_device');
+        $product_all = $product_collection->find();
         $products = [];
-        foreach ($req->fetch_all(MYSQLI_ASSOC) as $product) {
+        foreach ($product_all as $product) {
             $products[] = new Product(
-                @$product['id'],
-                @$product['name'],
-                @$product['price'],
-                @$product['description'],
-                @$product['content'],
-                @$product['img']
+                $product['_id'],
+                $product['abstract_name'],
+                $product['name'],
+                $product['origin'],
+                $product['price'],
+                $product['description'],
+                $product['amount_in_stock'],
             );
         }
         return $products;
     }
 
-    static function get($id)
-    {
-        $db = DB::getInstance();
-        $req = $db->query("SELECT * FROM product WHERE id = $id");
-        $result = $req->fetch_assoc();
-        $product = new Product(
-            $result['id'],
-            $result['name'],
-            $result['price'],
-            $result['description'],
-            $result['content'],
-            $result['img']
-        );
-        return $product;
-    }
+    // static function get($id)
+    // {
+    //     $db = DB::getInstance();
+    //     $req = $db->query("SELECT * FROM product WHERE id = $id");
+    //     $result = $req->fetch_assoc();
+    //     $product = new Product(
+    //         $result['id'],
+    //         $result['name'],
+    //         $result['price'],
+    //         $result['description'],
+    //         $result['content'],
+    //         $result['img']
+    //     );
+    //     return $product;
+    // }
 
     static function insert($name, $price, $description, $content, $img)
     {
