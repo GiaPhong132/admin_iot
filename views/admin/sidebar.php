@@ -88,7 +88,7 @@
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="index.php?page=admin&controller=products&action=getChart">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Charts</span></a>
     </li>
@@ -120,7 +120,7 @@
 <div id="content-wrapper" class="d-flex flex-column">
 
     <!-- Main Content -->
-    <div id="content">
+    <div id="content" style="background-color:white">
 
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">

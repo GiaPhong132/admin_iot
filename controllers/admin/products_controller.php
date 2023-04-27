@@ -43,6 +43,16 @@ class ProductsController extends BaseController
         $this->render('index', $data);
     }
 
+    public function getChart()
+    {
+
+        $result =  Product::getUserNumAfter();
+        $months = $result['months'];
+        $amount = $result['amount'];
+        $data = array('amount' => $amount, "months" => $months);
+        $this->render('chart', $data);
+    }
+
     // public function getAll()
     // {
     //     $db = DB::getInstance();
