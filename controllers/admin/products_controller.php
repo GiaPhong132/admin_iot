@@ -30,7 +30,17 @@ class ProductsController extends BaseController
         $description = $_POST['description'];
         $amount_in_stock = $_POST['amount_in_stock'];
         $result = Product::update($id, $abstract_name, $name, $origin, $price, $description, $amount_in_stock);
-        echo var_dump($result);
+        $message = '<div id="message_update" class="alert alert-danger" role="alert">
+                            Update Failed
+                            </div>';
+        if ($result) {
+            $message = '<div id="message_update" class="alert alert-success" role="alert">
+                                Update Successfully!
+                                </div>';
+        }
+        $products = Product::getAll();
+        $data = array('message' => $message, 'products' => $products);
+        $this->render('index', $data);
     }
 
     // public function getAll()
