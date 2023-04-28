@@ -15,9 +15,14 @@ class ProductsController extends BaseController
 
     public function index()
     {
-        $pageNum = 0;
-        if (isset($_POST['pageNum']))
-            $pageNum = $_POST['pageNum'];
+        $totalPage = Product::getTotalDocuments();
+        if (session_status() !== PHP_SESSION_ACTIVE) {
+            session_start();
+        }
+        $_SESSION['totalPage'] = $totalPage;
+        $pageNum = 1;
+        if (isset($_GET['pageNum']))
+            $pageNum = $_GET['pageNum'];
         $products = Product::getFrom($pageNum);
         $data = array('products' => $products, 'pageNum' => $pageNum);
         $this->render('index', $data);

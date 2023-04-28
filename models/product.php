@@ -43,6 +43,15 @@ class Product
         }
         return $products;
     }
+
+    static function getTotalDocuments()
+    {
+        $db = DB::getInstance();
+        $abstract_collection = $db->selectCollection('abstract_device');
+        $abstract_count = $abstract_collection->count();
+        return $abstract_count;
+    }
+
     static function getFrom($pageNum)
     {
 
