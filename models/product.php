@@ -122,7 +122,7 @@ class Product
         $curr_month = date('m');
         $start_date = "01";
         $curr_time = "00:00:00";
-        $count_months = 4;
+        $count_months = 5;
         $months = [];
         $amount = [];
         while ($count_months > 0) {
@@ -136,11 +136,18 @@ class Product
             $cond = ['time' => ['$gte' => $start, '$lte' => $end]];
 
             $result  = $fan_volume_coll->find($cond);
+
             array_unshift($amount, getAverage($result)) . '    ';
             array_unshift($months, getMonth($curr_month));
-            $curr_month -= 1;
+            if ($curr_month == 1) {
+                $curr_month = 12;
+                $curr_year -= 1;
+            } else {
+                $curr_month -= 1;
+            }
             $count_months -= 1;
         }
+        // echo var_dump($amount);
         return array("amount" => $amount, "months" => $months);
     }
 
@@ -152,7 +159,7 @@ class Product
         $curr_month = date('m');
         $start_date = "01";
         $curr_time = "00:00:00";
-        $count_months = 4;
+        $count_months = 5;
         $months = [];
         $amount = [];
         while ($count_months > 0) {
@@ -168,7 +175,12 @@ class Product
             $result  = $fan_volume_coll->find($cond);
             array_unshift($amount, getAverage($result)) . '    ';
             array_unshift($months, getMonth($curr_month));
-            $curr_month -= 1;
+            if ($curr_month == 1) {
+                $curr_month = 12;
+                $curr_year -= 1;
+            } else {
+                $curr_month -= 1;
+            }
             $count_months -= 1;
         }
         return array("amount" => $amount, "months" => $months);
@@ -182,7 +194,7 @@ class Product
         $curr_month = date('m');
         $start_date = "01";
         $curr_time = "00:00:00";
-        $count_months = 4;
+        $count_months = 5;
         $months = [];
         $amount = [];
         while ($count_months > 0) {
@@ -198,7 +210,12 @@ class Product
             $result  = $fan_volume_coll->find($cond);
             array_unshift($amount, getAverage($result)) . '    ';
             array_unshift($months, getMonth($curr_month));
-            $curr_month -= 1;
+            if ($curr_month == 1) {
+                $curr_month = 12;
+                $curr_year -= 1;
+            } else {
+                $curr_month -= 1;
+            }
             $count_months -= 1;
         }
         return array("amount" => $amount, "months" => $months);
@@ -212,7 +229,7 @@ class Product
         $curr_month = date('m');
         $start_date = "01";
         $curr_time = "00:00:00";
-        $count_months = 4;
+        $count_months = 5;
         $months = [];
         $amount = [];
         while ($count_months > 0) {
@@ -228,7 +245,12 @@ class Product
             $result  = $fan_volume_coll->find($cond);
             array_unshift($amount, getSum($result));
             array_unshift($months, getMonth($curr_month));
-            $curr_month -= 1;
+            if ($curr_month == 1) {
+                $curr_month = 12;
+                $curr_year -= 1;
+            } else {
+                $curr_month -= 1;
+            }
             $count_months -= 1;
         }
         return array("amount" => $amount, "months" => $months);
@@ -242,7 +264,7 @@ class Product
         $curr_month = date('m');
         $start_date = "01";
         $curr_time = "00:00:00";
-        $count_months = 4;
+        $count_months = 5;
         $months = [];
         $amount = [];
         while ($count_months > 0) {
@@ -258,7 +280,12 @@ class Product
             $result  = $fan_volume_coll->find($cond);
             array_unshift($amount, getAverage($result) * 100);
             array_unshift($months, getMonth($curr_month));
-            $curr_month -= 1;
+            if ($curr_month == 1) {
+                $curr_month = 12;
+                $curr_year -= 1;
+            } else {
+                $curr_month -= 1;
+            }
             $count_months -= 1;
         }
         return array("amount" => $amount, "months" => $months);
@@ -272,7 +299,7 @@ class Product
         $curr_month = date('m');
         $start_date = "01";
         $curr_time = "00:00:00";
-        $count_months = 4;
+        $count_months = 5;
         $months = [];
         $amount = [];
         while ($count_months > 0) {
@@ -288,7 +315,12 @@ class Product
             $result  = $fan_volume_coll->find($cond);
             array_unshift($amount, getSum($result)) . '    ';
             array_unshift($months, getMonth($curr_month));
-            $curr_month -= 1;
+            if ($curr_month == 1) {
+                $curr_month = 12;
+                $curr_year -= 1;
+            } else {
+                $curr_month -= 1;
+            }
             $count_months -= 1;
         }
         return array("amount" => $amount, "months" => $months);
@@ -302,7 +334,7 @@ class Product
         $curr_month = date('m');
         $start_date = "01";
         $curr_time = "00:00:00";
-        $count_months = 4;
+        $count_months = 5;
         $months = [];
         $amount = [];
         while ($count_months > 0) {
@@ -318,7 +350,12 @@ class Product
             $result  = $fan_volume_coll->find($cond);
             array_unshift($amount, getAverage($result)) . '    ';
             array_unshift($months, getMonth($curr_month));
-            $curr_month -= 1;
+            if ($curr_month == 1) {
+                $curr_month = 12;
+                $curr_year -= 1;
+            } else {
+                $curr_month -= 1;
+            }
             $count_months -= 1;
         }
         return array("amount" => $amount, "months" => $months);

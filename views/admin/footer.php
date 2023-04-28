@@ -29,6 +29,11 @@
 
     </div>
     </div>
+    <script>
+        const toggleButton = document.querySelector('#sidebarToggle');
+
+        toggleButton.click();
+    </script>
     </body>
 
     </html>
