@@ -15,8 +15,11 @@ class UserController extends BaseController
 
     public function index()
     {
-        $user = User::getAll();
-        $data = array('users' => $user);
+        $pageNum = 0;
+        if (isset($_POST['pageNum']))
+            $pageNum = $_POST['pageNum'];
+        $user = User::getFrom($pageNum);
+        $data = array('users' => $user, 'pageNum' => $pageNum);
         $this->render('index', $data);
     }
 
@@ -40,8 +43,11 @@ class UserController extends BaseController
                                 <div style="margin-left: 45%">Update Failed</div>
                             </div>';
         }
+        $pageNum = 0;
+        if (isset($_POST['pageNum']))
+            $pageNum = $_POST['pageNum'];
         $user = User::getAll();
-        $data = array("message" => $message, 'users' => $user);
+        $data = array("message" => $message, 'pageNum' => $pageNum, 'users' => $user);
         $this->render('index', $data);
     }
 
@@ -57,8 +63,11 @@ class UserController extends BaseController
                                 <div style="margin-left: 45%">Delete Failed</div>
                             </div>';
         }
+        $pageNum = 0;
+        if (isset($_POST['pageNum']))
+            $pageNum = $_POST['pageNum'];
         $user = User::getAll();
-        $data = array("message" => $message, 'users' => $user);
+        $data = array("message" => $message, 'pageNum' => $pageNum, 'users' => $user);
         $this->render('index', $data);
     }
 }

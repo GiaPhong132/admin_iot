@@ -15,8 +15,11 @@ class ProductsController extends BaseController
 
     public function index()
     {
-        $products = Product::getAll();
-        $data = array('products' => $products);
+        $pageNum = 0;
+        if (isset($_POST['pageNum']))
+            $pageNum = $_POST['pageNum'];
+        $products = Product::getFrom($pageNum);
+        $data = array('products' => $products, 'pageNum' => $pageNum);
         $this->render('index', $data);
     }
 

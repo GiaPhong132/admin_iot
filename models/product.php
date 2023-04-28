@@ -43,6 +43,29 @@ class Product
         }
         return $products;
     }
+    static function getFrom($pageNum)
+    {
+
+        $db = DB::getInstance();
+        $product_collection = $db->selectCollection('abstract_device');
+        $skip_num = 0;
+        if ($pageNum > 2)
+            $skip_num = $pageNum - 1;
+        $product_all = $product_collection->find([], ['skip' => $skip_num * 10, 'limit' => 10]);
+        $products = [];
+        foreach ($product_all as $product) {
+            $products[] = new Product(
+                $product['_id'],
+                $product['abstract_name'],
+                $product['name'],
+                $product['origin'],
+                $product['price'],
+                $product['description'],
+                $product['amount_in_stock'],
+            );
+        }
+        return $products;
+    }
 
     // static function get($id)
     // {

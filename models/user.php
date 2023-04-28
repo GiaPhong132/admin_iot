@@ -59,6 +59,35 @@ class User
         return $users;
     }
 
+    static function getFrom($pageNum)
+    {
+        $db = DB::getInstance();
+        $users_collection = $db->selectCollection('user');
+        $skip_num = 0;
+        if ($pageNum > 2)
+            $skip_num = $pageNum - 1;
+        $user_all = $users_collection->find([], ['skip' => $skip_num * 10, 'limit' => 10]);
+        $users = [];
+        foreach ($user_all as $user) {
+            $users[] = new User(
+                $user['_id'],
+                $user['email'],
+                $user['fname'],
+                $user['lname'],
+                $user['gender'],
+                $user['state'],
+                $user['type'],
+                $user['payment'],
+                $user['concurrent_device'],
+                $user['phone_number'],
+                $user['birthday'],
+                $user['date_created']
+                // Do not return password
+            );
+        }
+        return $users;
+    }
+
     static function deleteUser($id)
     {
         $db = DB::getInstance();

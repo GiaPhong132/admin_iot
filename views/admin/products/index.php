@@ -37,7 +37,7 @@
                             <th>Origin</th>
                             <th>Price</th>
                             <th>In Stock</th>
-                            <th>Action</th>
+                            <th>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAction</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -47,7 +47,7 @@
                             <th>Origin</th>
                             <th>Price</th>
                             <th>In Stock</th>
-                            <th>Action</th>
+                            <th>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAction</th>
                         </tr>
                     </tfoot>
                     <tbody>
