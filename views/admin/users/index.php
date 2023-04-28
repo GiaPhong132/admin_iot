@@ -33,7 +33,7 @@
                             <th>&nbsp&nbsp&nbspFirst Name</th>
                             <th>&nbsp&nbspLast Name</th>
                             <th>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspE-mail</th>
-                            <th>Type</th>
+                            <th>Type </th>
                             <th>Payment</th>
                             <th>Concurrent Device</th>
                             <th>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAction</th>

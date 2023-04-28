@@ -52,15 +52,18 @@ class Product
         return $abstract_count;
     }
 
-    static function getFrom($pageNum)
+    static function getFrom($pageNum, $isSort = null)
     {
-
         $db = DB::getInstance();
         $product_collection = $db->selectCollection('abstract_device');
         $skip_num = 0;
         if ($pageNum > 2)
             $skip_num = $pageNum - 1;
-        $product_all = $product_collection->find([], ['skip' => $skip_num * 10, 'limit' => 10]);
+        if ($isSort == null)
+            $product_all = $product_collection->find([], ['skip' => $skip_num * 10, 'limit' => 10]);
+        else {
+            $product_all = $product_collection->find([], ['sort' => ['abstract_name' => $isSort], 'skip' => $skip_num * 10, 'limit' => 10]);
+        }
         $products = [];
         foreach ($product_all as $product) {
             $products[] = new Product(

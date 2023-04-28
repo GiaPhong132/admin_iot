@@ -68,6 +68,26 @@ class ProductsController extends BaseController
         $this->render('index', $data);
     }
 
+    public function sort()
+    {
+        $totalPage = Product::getTotalDocuments();
+        if (session_status() !== PHP_SESSION_ACTIVE) {
+            session_start();
+        }
+        $_SESSION['totalPage'] = $totalPage;
+        $pageNum = 1;
+        if (isset($_GET['pageNum']))
+            $pageNum = $_GET['pageNum'];
+        $order = -1;
+        if (($_GET['order'] == "asd"))
+            $order = 1;
+        $products = Product::getFrom($pageNum, $order);
+        $data = array('products' => $products, 'pageNum' => $pageNum);
+        // echo var_dump($products);
+        $this->render('index', $data);
+    }
+
+
     public function getUserChart()
     {
 
