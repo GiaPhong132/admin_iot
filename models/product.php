@@ -137,22 +137,29 @@ class Product
         $user_collection = $db->selectCollection('user');
         $curr_year = date('Y');
         $curr_month = date('m');
-        $curr_date = "01";
+        $start_date = "01";
         $curr_time = "00:00:00";
-        $count_months = 4;
+        $count_months = 5;
         $months = [];
         $amount = [];
         while ($count_months > 0) {
-            $current_date = $curr_year . '-' . $curr_month . '-' . $curr_date . ' ' . $curr_time;
-            $date = new DateTime($current_date);
-            $utc_date = new MongoDB\BSON\UTCDateTime($date->getTimestamp() * 1000);
-            $cond = ['date_created' => ['$lt' => $utc_date]];
+            $end_date = strval(getEndDate($curr_month));
+            $start = $curr_year . '-' . $curr_month . '-' . $start_date . ' ' . $curr_time;
+            $end = $curr_year . '-' . $curr_month . '-' . $end_date . ' ' . $curr_time;
+            $start = new DateTime($start);
+            $end = new DateTime($end);
+            $start = new MongoDB\BSON\UTCDateTime($start->getTimestamp() * 1000);
+            $end = new MongoDB\BSON\UTCDateTime($end->getTimestamp() * 1000);
+            $cond = ['date_created' => ['$gte' => $start, '$lte' => $end]];
             // var_dump($cond);
             array_unshift($amount, $user_collection->count($cond));
             array_unshift($months, getMonth($curr_month));
-            // echo $result->countDocuments();
-
-            $curr_month -= 1;
+            if ($curr_month == 1) {
+                $curr_month = 12;
+                $curr_year -= 1;
+            } else {
+                $curr_month -= 1;
+            }
             $count_months -= 1;
         }
         return array("amount" => $amount, "months" => $months);
