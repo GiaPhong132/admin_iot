@@ -13,9 +13,11 @@
 
 <body>
 
-    <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+    <canvas id="myBarChart" style="width:50%;max-width:600px; max-height:500px; float:left;"></canvas>
 
-    <script src="./views/admin/products/chart/ledChart.js"></script>
+    <canvas id="myLineChart" style="width:50%;max-width:600px; max-height: 500px;float:right; "></canvas>
+
+    <script src="./views/admin/products/charts/ledChart.js"></script>
 </body>
 
 </html>

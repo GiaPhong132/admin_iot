@@ -13,11 +13,11 @@
 
 <body>
 
-    <canvas id="myBarChart" style="width:50%;max-width:500px"></canvas>
+    <canvas id="myBarChart" style="width:50%;max-width:600px; max-height:500px; float:left;"></canvas>
 
-    <canvas id="myLineChart" style="width:50%;max-width:500px; max-height: 450px;float: right; margin-right: 0.5cm;"></canvas>
+    <canvas id="myLineChart" style="width:50%;max-width:600px; max-height: 500px;float:right; "></canvas>
 
-    <script src="./views/admin/products/chart/fanChart.js"></script>
+    <script src="./views/admin/products/charts/fanChart.js"></script>
 </body>
 
 </html>

@@ -226,7 +226,7 @@ class Product
             $cond = ['time' => ['$gte' => $start, '$lte' => $end]];
 
             $result  = $fan_volume_coll->find($cond);
-            array_unshift($amount, getCount($result)) . '    ';
+            array_unshift($amount, getSum($result));
             array_unshift($months, getMonth($curr_month));
             $curr_month -= 1;
             $count_months -= 1;
@@ -256,7 +256,7 @@ class Product
             $cond = ['time' => ['$gte' => $start, '$lte' => $end]];
 
             $result  = $fan_volume_coll->find($cond);
-            array_unshift($amount, getCount($result)) . '    ';
+            array_unshift($amount, getAverage($result) * 100);
             array_unshift($months, getMonth($curr_month));
             $curr_month -= 1;
             $count_months -= 1;
@@ -286,7 +286,7 @@ class Product
             $cond = ['time' => ['$gte' => $start, '$lte' => $end]];
 
             $result  = $fan_volume_coll->find($cond);
-            array_unshift($amount, getCount($result)) . '    ';
+            array_unshift($amount, getSum($result)) . '    ';
             array_unshift($months, getMonth($curr_month));
             $curr_month -= 1;
             $count_months -= 1;
@@ -336,7 +336,7 @@ function getAverage($result)
     return number_format($sum / $count, 2);
 }
 
-function getCount($result)
+function getSum($result)
 {
     $sum = 0;
     foreach ($result as $item) {
