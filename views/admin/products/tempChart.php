@@ -24,7 +24,7 @@
                 <tr>
                     <th scope="col">Month</th>
                     <th scope="col">Current Value</th>
-                    <th scope="col">Change From Previous Period</th>
+                    <th scope="col">&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspChange From Previous Period</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,8 +32,8 @@
                 for ($i = 1; $i < 5; $i++) {
                     echo '<tr>';
                     echo '<td>' . $months[$i] . ' </td>';
-                    echo '<td>' . $amount[$i] . ' &deg C</td>';
-                    echo '<td>' . $amount[$i] - $amount[$i - 1] . ' &deg C</td>';
+                    echo '<td>&nbsp&nbsp&nbsp&nbsp' . $amount[$i] . ' &deg C</td>';
+                    echo '<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp' . $amount[$i] - $amount[$i - 1] . ' &deg C</td>';
                     echo '</tr>';
                 }
                 ?>

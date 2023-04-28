@@ -32,22 +32,33 @@ class UserController extends BaseController
         $payment = $_POST['payment'];
         $concurrent_device = $_POST['concurrent_device'];
         $result = User::update($id, $email, $fname, $lname, $type, $gender, $phone_number, $payment, $concurrent_device);
-        echo var_dump($result);
+        $message = ' <div id="message" class="alert alert-success" role="alert">
+                                <div style="margin-left: 45%">Update Successfully</div>
+                            </div>';
+        if (!$result) {
+            $message = ' <div id="message" class="alert alert-danger" role="alert">
+                                <div style="margin-left: 45%">Update Failed</div>
+                            </div>';
+        }
+        $user = User::getAll();
+        $data = array("message" => $message, 'users' => $user);
+        $this->render('index', $data);
     }
 
-    // public function delete()
-    // {
-    //     $page_number = $_GET['pg'];
-
-    //     $email = $_POST['email'];
-    //     $createAt = $_POST['createAt'];
-    //     $delete_user = User::delete($email, $createAt);
-
-
-    //     $tmp = "Location: index.php?page=admin&controller=paginateuser&action=index&pg=$page_number";
-    //     header($tmp);
-
-
-    //     // header('Location: index.php?page=admin&controller=members&action=index');
-    // }
+    public function delete()
+    {
+        $id = new ObjectID($_POST['delete_user']);
+        $result = User::deleteUser($id);
+        $message = ' <div id="message" class="alert alert-success" role="alert">
+                                <div style="margin-left: 45%">Delete Successfully</div>
+                            </div>';
+        if (!$result) {
+            $message = ' <div id="message" class="alert alert-danger" role="alert">
+                                <div style="margin-left: 45%">Delete Failed</div>
+                            </div>';
+        }
+        $user = User::getAll();
+        $data = array("message" => $message, 'users' => $user);
+        $this->render('index', $data);
+    }
 }

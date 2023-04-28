@@ -59,6 +59,15 @@ class User
         return $users;
     }
 
+    static function deleteUser($id)
+    {
+        $db = DB::getInstance();
+        $users_collection = $db->selectCollection('user');
+        $cond = ['_id' => $id];
+        $result = $users_collection->deleteOne($cond);
+        return $result;
+    }
+
     // static function get($email)
     // {
     //     $db = DB::getInstance();

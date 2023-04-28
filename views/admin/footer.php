@@ -33,6 +33,14 @@
         const toggleButton = document.querySelector('#sidebarToggle');
 
         toggleButton.click();
+
+        // get a reference to the element
+        var element = document.getElementById('message');
+
+        // set a timer to hide the element after 5 seconds (5000 milliseconds)
+        setTimeout(function() {
+            element.style.display = 'none';
+        }, 4000);
     </script>
     </body>
 

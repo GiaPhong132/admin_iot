@@ -1,7 +1,11 @@
 <div class="container-fluid">
-
+    <?php
+    if (isset($message)) {
+        echo $message;
+    }
+    ?>
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+    <h1 class="h3 mb-2 text-gray-800">Users</h1>
     <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
         For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p> -->
 
@@ -15,24 +19,24 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>E-mail</th>
+                            <th>&nbsp&nbsp&nbspFirst Name</th>
+                            <th>&nbsp&nbspLast Name</th>
+                            <th>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspE-mail</th>
                             <th>Type</th>
                             <th>Payment</th>
                             <th>Concurrent Device</th>
-                            <th>Action</th>
+                            <th>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAction</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>E-mail</th>
+                            <th>&nbsp&nbsp&nbspFirst Name</th>
+                            <th>&nbsp&nbspLast Name</th>
+                            <th>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspE-mail</th>
                             <th>Type</th>
                             <th>Payment</th>
                             <th>Concurrent Device</th>
-                            <th>Action</th>
+                            <th>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAction</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -45,15 +49,37 @@
                             echo "<td> $row->email</td>";
                             echo "<td> $row->type</td>";
                             echo "<td> $row->payment</td>";
-                            echo "<td> $row->concurrent_device</td>";
+                            echo "<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp $row->concurrent_device</td>";
                             echo '<td>
                             <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal_' . $row->id . '">Update</button>
 
-                            <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal_' . $row->id . '">Delete</button>
+                            <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#deleteModal_' . $row->id . '">Delete</button>
 
                             </td>';
                             echo  "</tr>";
                             echo '
+                                <div class="modal fade" id="deleteModal_' . $row->id . '"           role="dialog">
+                                        <div class="modal-dialog">
+
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Are you sure to delete user <strong>' . $row->fname . ' ' . $row->lname . '</strong></p>
+                                                </div>
+                                                <form action="index.php?page=admin&controller=user&action=delete" method="POST">
+                                                    <div class="modal-footer">
+                                                        <button name="delete_user" value="' . $row->id . '" type="submit" class="btn btn-danger" >Delete</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
                         <div class="modal fade" id="myModal_' . $row->id . '" role="dialog">
                         <div class="modal-dialog">
                             <!-- Modal content-->
@@ -176,5 +202,7 @@
             </div>
         </div>
     </div>
+
+
     <!--  -->
 </div>
