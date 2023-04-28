@@ -59,6 +59,14 @@ class User
         return $users;
     }
 
+    static function getTotalDocuments()
+    {
+        $db = DB::getInstance();
+        $users_collection = $db->selectCollection('user');
+        $user_count = $users_collection->count();
+        return $user_count;
+    }
+
     static function getFrom($pageNum)
     {
         $db = DB::getInstance();

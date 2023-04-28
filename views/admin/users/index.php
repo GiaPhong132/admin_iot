@@ -199,6 +199,59 @@
 
                     </tbody>
                 </table>
+                <nav aria-label="Page navigation example" style="float: right;">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                        <!-- <li class="page-item"><a class="page-link" href="#">1</a></li> -->
+                        <?php
+                        $totalPage = ceil($_SESSION['totalPage'] / 10);
+                        if ($totalPage > 1) {
+
+                            $page_appear_max = 2;
+                            if ($pageNum == 1) {
+                                echo '<li class="page-item"><a class="page-link" href="#">' . $pageNum . '</a></li>';
+
+                                for ($page = $pageNum + 1; $page < $totalPage; $page++) {
+                                    if ($page_appear_max) {
+                                        echo '<li class="page-item"><a class="page-link" href="index.php?page=admin&controller=user&action=index&pageNum=' . $page . '">' . $page . '</a></li>';
+                                        $page_appear_max -= 1;
+                                    } else
+                                        break;
+                                }
+                            } elseif ($pageNum == $totalPage) {
+                                echo '<li class="page-item"><a class="page-link" href="#">' . $pageNum . '</a></li>';
+                                if ($totalPage == 2) {
+                                    echo '<li class="page-item"><a class="page-link" href="index.php?page=admin&controller=user&action=index&pageNum=' . $pageNum - 1 . '">' . $pageNum - 1 . '</a></li>';
+                                } else {
+                                    echo '<li class="page-item"><a class="page-link" href="index.php?page=admin&controller=user&action=index&pageNum=' . $pageNum - 2 . '">' . $pageNum - 2 . '</a></li>';
+                                }
+                            } else {
+                                echo '<li class="page-item"><a class="page-link" href="index.php?page=admin&controller=user&action=index&pageNum=' . $pageNum - 1 . '">' . $pageNum - 1 . '</a></li>';
+
+                                echo '<li class="page-item"><a class="page-link" href="#">' . $pageNum . '</a></li>';
+
+
+                                echo '<li class="page-item"><a class="page-link" href="index.php?page=admin&controller=user&action=index&pageNum=' . $pageNum + 1 . '">' . $pageNum + 1 . '</a></li>';
+                            }
+                        }
+
+
+                        ?>
+                        <!-- <li class="page-item"><a class="page-link" href="#">2</a></li> -->
+                        <!-- <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
