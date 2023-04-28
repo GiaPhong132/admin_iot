@@ -62,11 +62,35 @@
                             echo '<td>
                             <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal_' . $row->id . '">Update</button>
 
-                            <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal_' . $row->id . '">Delete</button>
+                            <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#deleteModal_' . $row->id . '">Delete</button>
 
                             </td>';
                             echo  "</tr>";
                             echo '
+
+                                    <div class="modal fade" id="deleteModal_' . $row->id . '"           role="dialog">
+                                        <div class="modal-dialog">
+
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Are you sure to delete this product <strong>' . $row->name . '</strong></p>
+                                                </div>
+                                                <form action="index.php?page=admin&controller=products&action=delete" method="POST">
+                                                    <div class="modal-footer">
+                                                        <button name="device_id" value="' . $row->id . '" type="submit" class="btn btn-danger" >Delete</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
                         <div class="modal fade" id="myModal_' . $row->id . '" role="dialog">
                         <div class="modal-dialog">
                             <!-- Modal content-->

@@ -30,13 +30,30 @@ class ProductsController extends BaseController
         $description = $_POST['description'];
         $amount_in_stock = $_POST['amount_in_stock'];
         $result = Product::update($id, $abstract_name, $name, $origin, $price, $description, $amount_in_stock);
-        $message = '<div id="message_update" class="alert alert-danger" role="alert">
-                            Update Failed
-                            </div>';
+        $message = $message = ' <div id="message" class="alert alert-success" role="alert">
+                                                    <div style="margin-left: 45%">Update Failed</div>
+                                                </div>';
         if ($result) {
-            $message = '<div id="message_update" class="alert alert-success" role="alert">
-                                Update Successfully!
-                                </div>';
+            $message = ' <div id="message" class="alert alert-success" role="alert">
+                                <div style="margin-left: 45%">Update Successfully</div>
+                            </div>';
+        }
+        $products = Product::getAll();
+        $data = array('message' => $message, 'products' => $products);
+        $this->render('index', $data);
+    }
+
+    public function delete()
+    {
+        $id = new ObjectId($_POST['device_id']);
+        $result = Product::deleteProduct($id);
+        $message = $message = ' <div id="message" class="alert alert-success" role="alert">
+                                                    <div style="margin-left: 45%">Delete Failed</div>
+                                                </div>';
+        if ($result) {
+            $message = ' <div id="message" class="alert alert-success" role="alert">
+                                <div style="margin-left: 45%">Delete Successfully</div>
+                            </div>';
         }
         $products = Product::getAll();
         $data = array('message' => $message, 'products' => $products);
